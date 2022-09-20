@@ -324,11 +324,11 @@ export default class NbsSearchWebPart extends BaseClientSideWebPart<INbsSearchWe
     this._taxonomyService = new TaxonomyService(this.context.pageContext.site.absoluteUrl);
 
     this._timeZoneBias = {
-        WebBias: this.context.pageContext.legacyPageContext.webTimeZoneData.Bias,
-        WebDST: this.context.pageContext.legacyPageContext.webTimeZoneData.DaylightBias,
+        WebBias: this.context.pageContext.legacyPageContext.webTimeZoneData ? this.context.pageContext.legacyPageContext.webTimeZoneData.Bias : 0,
+        WebDST: this.context.pageContext.legacyPageContext.webTimeZoneData ? this.context.pageContext.legacyPageContext.webTimeZoneData.DaylightBias : 0,
         UserBias: null,
         UserDST: null,
-        Id: this.context.pageContext.legacyPageContext.webTimeZoneData.Id
+        Id: this.context.pageContext.legacyPageContext.webTimeZoneData ? this.context.pageContext.legacyPageContext.webTimeZoneData.Id : 0
     };
     if (this.context.pageContext.legacyPageContext.userTimeZoneData) {
         this._timeZoneBias.UserBias = this.context.pageContext.legacyPageContext.userTimeZoneData.Bias;
